@@ -59,7 +59,9 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(fullframe)
+   dotspacemacs-additional-packages '(
+                                      fullframe
+                                      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -230,25 +232,65 @@ layers configuration. You are free to put any user code."
   (setq vc-follow-symlinks t)
   (fullframe magit-status magit-mode-quit-window)
 
-  ;; org-mode
+  (rae/configure-org-mode)
+
+  ;; keybindings
+  (evil-leader/set-key "oc" 'org-capture)
+  (evil-leader/set-key "oa" 'org-agenda)
+)
+
+(defun rae/configure-org-mode ()
+  (require 'org-checklist)
+
+  ;; settings
   (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|org\\.txt\\)$" . org-mode))
   (setq org-cycle-separator-lines 1)
   (setq org-blank-before-new-entry '((heading . t) (plain-list-item . nil)))
   (setq org-agenda-file-regexp "\\`[^.].*\\.\\(org\\.txt\\|org\\)\\'")
-  ;; (setq org-todo-keywords '((sequence "T" "D")))
+
+  ;; keybindings
+  (evil-leader/set-key-for-mode 'org-mode
+    "mz" 'org-add-note)
+
+  ;; todos
+  (setq org-todo-keywords
+        (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+                (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING"))))
+
+  (setq org-todo-state-tags-triggers
+        (quote (("CANCELLED" ("CANCELLED" . t))
+                ("WAITING" ("WAITING" . t))
+                ("HOLD" ("WAITING") ("HOLD" . t))
+                (done ("WAITING") ("HOLD"))
+                ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+                ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+                ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
   ;; organizer directory
   (if (memq window-system '(w32))
-      (setq rae-org-dir "C:/Users/ryan")
-    (setq rae-org-dir (expand-file-name "~")))
+      (setq rae/home-dir "C:/Users/ryan")
+    (setq rae/home-dir (expand-file-name "~")))
+  (setq org-directory (concat rae/home-dir "/Dropbox/Documents/Organizer/"))
+  (setq org-default-notes-file (concat org-directory "inbox.org.txt"))
+  (setq rae/org-default-habits-file (concat org-directory "habits.org.txt"))
 
-  (setq org-agenda-files
-        (list
-         (concat rae-org-dir "/Dropbox/Documents/Organizer")))
+  ;; agenda
+  (setq org-agenda-files (list org-directory))
 
-  ;; keybindings
-  (evil-leader/set-key "oc" 'org-capture)
-)
+  ;; capture
+  (setq org-capture-templates
+        (quote (("t" "todo" entry (file org-default-notes-file)
+                 "* TODO %?\n%U\n%a\n")
+                ("m" "Meeting" entry (file org-default-notes-file)
+                 "* MEETING with %? :MEETING:\n%U")
+                ("h" "Habit" entry (file rae/org-default-notes-file)
+                 "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
+
+  ;; refiling
+  (setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                   (org-agenda-files :maxlevel . 9))))
+  )
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
