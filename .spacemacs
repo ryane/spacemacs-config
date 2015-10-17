@@ -37,14 +37,29 @@ values."
      ;; version-control
      ;;
      osx
-     git
+     auto-completion
+     better-defaults
+     (git :variables
+          git-gutter-use-fringe t)
+     github
+     markdown
+     syntax-checking
+     (org :variables
+          org-enable-github-support t)
+     ;;
+     html
+     ruby
+     yaml
+     javascript
+     go
+     ;;
      rae-auto-save
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(fullframe)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
