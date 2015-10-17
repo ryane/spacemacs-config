@@ -225,6 +225,29 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  (setq powerline-default-separator nil)
+  (setq sentence-end-double-space nil)
+  (setq vc-follow-symlinks t)
+  (fullframe magit-status magit-mode-quit-window)
+
+  ;; org-mode
+  (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|org\\.txt\\)$" . org-mode))
+  (setq org-cycle-separator-lines 1)
+  (setq org-blank-before-new-entry '((heading . t) (plain-list-item . nil)))
+  (setq org-agenda-file-regexp "\\`[^.].*\\.\\(org\\.txt\\|org\\)\\'")
+  ;; (setq org-todo-keywords '((sequence "T" "D")))
+
+  ;; organizer directory
+  (if (memq window-system '(w32))
+      (setq rae-org-dir "C:/Users/ryan")
+    (setq rae-org-dir (expand-file-name "~")))
+
+  (setq org-agenda-files
+        (list
+         (concat rae-org-dir "/Dropbox/Documents/Organizer")))
+
+  ;; keybindings
+  (evil-leader/set-key "oc" 'org-capture)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
