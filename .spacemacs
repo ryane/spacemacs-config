@@ -62,6 +62,7 @@ values."
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
                                       fullframe
+                                      org-journal
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -240,9 +241,28 @@ layers configuration. You are free to put any user code."
 
   (rae/configure-org-mode)
 
-  ;; keybindings
-  (evil-leader/set-key "oc" 'org-capture)
-  (evil-leader/set-key "oa" 'org-agenda)
+  ;; global keybindings
+  (evil-leader/set-key
+    "oc" 'org-capture
+    "oa" 'org-agenda
+    "ol" 'org-store-link
+    )
+
+  ;; deft
+  (evil-leader/set-key-for-mode 'deft-mode
+    "ml" 'deft-filter
+    "mc" 'deft-filter-clear
+    )
+
+  ;; org-journal
+  (setq org-journal-dir "~/Dropbox/Documents/Organizer/Journal"
+        org-journal-file-format "%Y%m%d.txt")
+  (evil-leader/set-key
+    "jj" 'org-journal-new-entry)
+
+  (evil-leader/set-key-for-mode 'org-journal-mode
+    "mn" 'org-journal-open-next-entry
+    "mp" 'org-journal-open-previous-entry)
 )
 
 (defun rae/configure-org-mode ()
@@ -283,18 +303,48 @@ layers configuration. You are free to put any user code."
   ;; agenda
   (setq org-agenda-files (list org-directory))
 
+  ;; tags
+  ;; Tags with fast selection keys
+  (setq org-tag-alist (quote ((:startgroup)
+                              ("@errand" . ?e)
+                              ("@office" . ?o)
+                              ("@home" . ?H)
+                              (:endgroup)
+                              ("WAITING" . ?w)
+                              ("HOLD" . ?h)
+                              ("IDEA" . ?i)
+                              ("PERSONAL" . ?P)
+                              ("DRAFT" . ?D)
+                              ("WORK" . ?W)
+                              ("NOTE" . ?n)
+                              ("CANCELLED" . ?c)
+                              ("FLAGGED" . ??))))
+
   ;; capture
   (setq org-capture-templates
         (quote (("t" "todo" entry (file org-default-notes-file)
                  "* TODO %?\n%U\n%a\n")
-                ("m" "Meeting" entry (file org-default-notes-file)
+                ("m" "meeting" entry (file org-default-notes-file)
                  "* MEETING with %? :MEETING:\n%U")
-                ("h" "Habit" entry (file rae/org-default-notes-file)
+                ("i" "idea" entry (file org-default-notes-file)
+                 "* %? :IDEA:\n%U\n%a\n")
+                ("n" "note" entry (file org-default-notes-file)
+                 "* %? :NOTE:\n%U\n%a\n")
+                ("h" "habit" entry (file rae/org-default-notes-file)
                  "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n"))))
 
   ;; refiling
   (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                    (org-agenda-files :maxlevel . 9))))
+
+  ;; babel
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '(
+                                 (emacs-lisp . t)
+                                 (ruby . t)
+                                 (shell . t)
+                                 ))
+
   )
 
 
