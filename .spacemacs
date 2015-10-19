@@ -218,6 +218,7 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+  (setq-default evil-escape-key-sequence "jk")
   (when (eq system-type 'darwin)
     ;; tweak for using brew emacs (not emacs-mac which doesn't support running
     ;; in a terminal)
