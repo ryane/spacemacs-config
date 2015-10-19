@@ -39,6 +39,7 @@ values."
      osx
      auto-completion
      better-defaults
+     deft
      (git :variables
           git-gutter-use-fringe t)
      github
@@ -230,6 +231,11 @@ layers configuration. You are free to put any user code."
   (setq powerline-default-separator nil)
   (setq sentence-end-double-space nil)
   (setq vc-follow-symlinks t)
+  (setq deft-directory "~/Dropbox/Documents/Organizer/Notes"
+        deft-use-filter-string-for-filename t
+        deft-use-filename-as-title t
+        deft-extensions '("txt" "md" "org")
+        deft-text-mode 'org-mode)
   (fullframe magit-status magit-mode-quit-window)
 
   (rae/configure-org-mode)
