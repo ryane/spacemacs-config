@@ -253,8 +253,8 @@ layers configuration. You are free to put any user code."
 
   ;; global keybindings
   (evil-leader/set-key
-    "oc" 'org-capture
     "oa" 'org-agenda
+    "oc" 'org-capture
     "ol" 'org-store-link
     )
 
@@ -285,10 +285,11 @@ layers configuration. You are free to put any user code."
   (setq org-cycle-separator-lines 1)
   (setq org-blank-before-new-entry '((heading . t) (plain-list-item . nil)))
   (setq org-agenda-file-regexp "\\`[^.].*\\.\\(org\\.txt\\|org\\)\\'")
+  (setq org-clock-idle-time 15)
 
   ;; keybindings
-  (evil-leader/set-key-for-mode 'org-mode
-    "mz" 'org-add-note)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "z" 'org-add-note)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "F" 'org-attach)
 
   ;; todos
   (setq org-todo-keywords
@@ -314,6 +315,8 @@ layers configuration. You are free to put any user code."
 
   ;; agenda
   (setq org-agenda-files (list org-directory))
+  (setq org-agenda-skip-scheduled-if-done t)
+  (setq org-agenda-skip-deadline-if-done t)
 
   ;; tags
   ;; Tags with fast selection keys
@@ -357,6 +360,10 @@ layers configuration. You are free to put any user code."
                                  (shell . t)
                                  ))
 
+  ;; pomodoro
+  (add-hook 'org-pomodoro-finished-hook (lambda()
+                                          (org-journal-new-entry nil)
+                                          ))
   )
 
 
