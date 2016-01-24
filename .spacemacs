@@ -53,6 +53,9 @@ values."
      yaml
      javascript
      go
+     terraform
+     dockerfile
+     react
      ;;
      rae-auto-save
      )
@@ -63,6 +66,10 @@ values."
    dotspacemacs-additional-packages '(
                                       fullframe
                                       org-journal
+                                      writeroom-mode
+                                      wc-goal-mode
+                                      beacon
+                                      nginx-mode
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -102,10 +109,10 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         zenburn
                          material
-                         spacemacs-dark
+                         zenburn
                          spacemacs-light
+                         spacemacs-dark
                          solarized-light
                          solarized-dark
                          leuven
