@@ -39,6 +39,7 @@ values."
      osx
      auto-completion
      better-defaults
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
      deft
      (git :variables
           git-gutter-use-fringe t)
@@ -240,6 +241,7 @@ layers configuration. You are free to put any user code."
   (setq powerline-default-separator nil)
   (setq sentence-end-double-space nil)
   (setq vc-follow-symlinks t)
+  (setq open-junk-file-format "~/Dropbox/Documents/Organizer/Scratch/%Y/%m/%d-%H%M%S.")
   (setq deft-directory "~/Dropbox/Documents/Organizer/Notes"
         deft-use-filter-string-for-filename t
         deft-use-filename-as-title t
@@ -271,6 +273,8 @@ layers configuration. You are free to put any user code."
   (evil-leader/set-key-for-mode 'org-journal-mode
     "mn" 'org-journal-open-next-entry
     "mp" 'org-journal-open-previous-entry)
+
+  (beacon-mode 1)
 )
 
 (defun rae/configure-org-mode ()
