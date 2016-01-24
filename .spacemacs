@@ -256,6 +256,10 @@ layers configuration. You are free to put any user code."
     "oa" 'org-agenda
     "oc" 'org-capture
     "ol" 'org-store-link
+    "oj" 'org-clock-jump-to-current-clock
+    )
+  (evil-leader/set-key
+    "fx" '(lambda() (interactive)(switch-to-buffer "*scratch*"))
     )
 
   ;; deft
