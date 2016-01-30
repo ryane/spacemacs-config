@@ -238,6 +238,7 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  (setq helm-echo-input-in-header-line nil)
   (setq powerline-default-separator nil)
   (setq sentence-end-double-space nil)
   (setq vc-follow-symlinks t)
