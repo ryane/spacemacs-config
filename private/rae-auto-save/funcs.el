@@ -9,6 +9,7 @@
   "Save the current buffer if `rae-auto-save' is not nil."
   (when (and rae-auto-save
              buffer-file-name
+             (not (string= "go-mode" major-mode)) ;; TODO: configurable modes to exclude
              (buffer-modified-p (current-buffer))
              (file-writable-p buffer-file-name))
     (save-buffer)))
