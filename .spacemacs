@@ -50,13 +50,15 @@ values."
           org-enable-github-support t)
      ;;
      html
+     elm
      ruby
      yaml
      javascript
-     go
+     (go :variables gofmt-command "goimports")
      terraform
      dockerfile
      react
+     vinegar
      ;;
      rae-auto-save
      )
@@ -71,6 +73,7 @@ values."
                                       wc-goal-mode
                                       beacon
                                       nginx-mode
+                                      keychain-environment
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
