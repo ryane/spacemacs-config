@@ -10,6 +10,7 @@
   (when (and rae-auto-save
              buffer-file-name
              (not (string= "go-mode" major-mode)) ;; TODO: configurable modes to exclude
+             (not (string= "gpg" (file-name-extension buffer-file-name))) ;; TODO: configurable exts to exclude
              (buffer-modified-p (current-buffer))
              (file-writable-p buffer-file-name))
     (save-buffer)))
