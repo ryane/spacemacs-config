@@ -372,6 +372,7 @@ layers configuration. You are free to put any user code."
   ;; keybindings
   (spacemacs/set-leader-keys-for-major-mode 'org-mode "z" 'org-add-note)
   (spacemacs/set-leader-keys-for-major-mode 'org-mode "F" 'org-attach)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "g" 'org-mac-grab-link)
 
   ;; todos
   (setq org-todo-keywords
