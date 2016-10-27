@@ -279,6 +279,12 @@ user code."
     ;; (exec-path-from-shell-copy-env "GPG_AGENT_INFO")
     )
 
+  (when (eq system-type 'gnu/linux)
+    ;; tweak for using brew emacs (not emacs-mac which doesn't support running
+    ;; in a terminal)
+    (setq browse-url-browser-function 'browse-url-generic
+          browse-url-generic-program "google-chrome")
+    )
   )
 
 (defun dotspacemacs/user-config ()
