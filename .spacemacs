@@ -494,6 +494,9 @@ layers configuration. You are free to put any user code."
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+ '(org-modules
+   (quote
+    (org-docview org-habit org-info org-irc org-rmail org-w3m org-mac-link)))
  '(paradox-github-token t)
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
