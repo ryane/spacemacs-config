@@ -301,9 +301,15 @@ layers configuration. You are free to put any user code."
 
   (rae/configure-org-mode)
 
+  (defun rae/org-agenda-day ()
+    (interactive)
+    (org-agenda-list nil nil 'day nil)
+    )
+
   ;; global keybindings
   (evil-leader/set-key
     "oa" 'org-agenda
+    "od" 'rae/org-agenda-day
     "oc" 'org-capture
     "ol" 'org-store-link
     "oj" 'org-clock-jump-to-current-clock
@@ -347,6 +353,7 @@ layers configuration. You are free to put any user code."
 
   ;; settings
   (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|org\\.txt\\)$" . org-mode))
+  (setq org-startup-indented t)
   (setq org-cycle-separator-lines 1)
   (setq org-blank-before-new-entry '((heading . t) (plain-list-item . nil)))
   (setq org-agenda-file-regexp "\\`[^.].*\\.\\(org\\.txt\\|org\\)\\'")
