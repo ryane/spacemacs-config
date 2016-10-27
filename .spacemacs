@@ -274,6 +274,9 @@ user code."
     ;; tweak for using brew emacs (not emacs-mac which doesn't support running
     ;; in a terminal)
     (setq ns-use-native-fullscreen nil)
+    (setq exec-path-from-shell-variables '("PATH" "MANPATH" "GPG_AGENT_INFO"))
+    ;; (exec-path-from-shell-initialize)
+    ;; (exec-path-from-shell-copy-env "GPG_AGENT_INFO")
     )
 
   )
