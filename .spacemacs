@@ -354,6 +354,16 @@ layers configuration. You are free to put any user code."
   (add-hook 'markdown-mode-hook 'flyspell-mode)
 
   (beacon-mode 1)
+
+  ;; babel
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '(
+                                 (emacs-lisp . t)
+                                 (ruby . t)
+                                 (sh . t)
+                                 (shell . t)
+                                 ))
+  )
 )
 
 (defun rae/configure-org-mode ()
@@ -436,14 +446,6 @@ layers configuration. You are free to put any user code."
   ;; refiling
   (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                    (org-agenda-files :maxlevel . 9))))
-
-  ;; babel
-  (org-babel-do-load-languages 'org-babel-load-languages
-                               '(
-                                 (emacs-lisp . t)
-                                 (ruby . t)
-                                 (shell . t)
-                                 ))
 
   ;; pomodoro
   (add-hook 'org-pomodoro-finished-hook (lambda()
