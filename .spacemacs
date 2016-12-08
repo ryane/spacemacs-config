@@ -499,6 +499,9 @@ layers configuration. You are free to put any user code."
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+ '(org-habit-following-days 4)
+ '(org-habit-graph-column 60)
+ '(org-habit-preceding-days 7)
  '(org-modules
    (quote
     (org-docview org-habit org-info org-irc org-rmail org-w3m org-mac-link)))
