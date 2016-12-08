@@ -48,7 +48,7 @@ values."
      markdown
      syntax-checking
      (org :variables
-          org-enable-github-support t)
+          org-enable-github-support nil)
      ;;
      html
      elm
