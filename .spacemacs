@@ -285,8 +285,9 @@ user code."
     ;; in a terminal)
     (setq browse-url-browser-function 'browse-url-generic
           browse-url-generic-program "google-chrome")
+
+    (global-set-key [key-4660] 'ignore)
     )
-  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
