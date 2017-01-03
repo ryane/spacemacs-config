@@ -52,7 +52,10 @@ values."
           org-enable-github-support nil)
      ;;
      html
-     elm
+     haskell
+     (elm :variables
+          elm-sort-imports-on-save t
+          elm-format-on-save t)
      ruby
      yaml
      javascript
