@@ -154,7 +154,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 10
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
@@ -318,12 +318,12 @@ layers configuration. You are free to put any user code."
   ;; (fullframe magit-status magit-mode-quit-window)
 
 
-  (setq rae/font-size "13")
+  (setq rae/font-size "10")
   (defun rae/font-size-toggle ()
     (interactive)
-    (if (string= rae/font-size "13")
-        (setq rae/font-size "10")
-      (setq rae/font-size "13"))
+    (if (string= rae/font-size "10")
+        (setq rae/font-size "8")
+      (setq rae/font-size "10"))
     (set-frame-font (concat "Source Code Pro-" rae/font-size) nil t)
     )
   (spacemacs/set-leader-keys "zt" 'rae/font-size-toggle)
