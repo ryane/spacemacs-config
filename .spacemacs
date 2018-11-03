@@ -18,12 +18,13 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     lua
+     ;; typescript
+     ;; lua
      python
-     rust
-     clojure
-     rust
-     ansible
+     ;; rust
+     ;; clojure
+     ;; rust
+     ;; ansible
      csv
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -57,10 +58,10 @@ values."
           org-enable-github-support nil)
      ;;
      html
-     haskell
-     (elm :variables
-          elm-sort-imports-on-save t
-          elm-format-on-save t)
+     ;; haskell
+     ;; (elm :variables
+     ;;      elm-sort-imports-on-save t
+     ;;      elm-format-on-save t)
      ruby
      yaml
      javascript
@@ -72,6 +73,7 @@ values."
      docker
      react
      vinegar
+     jsonnet
      ;;
      rae-auto-save
      )
@@ -82,13 +84,14 @@ values."
    dotspacemacs-additional-packages '(
                                       fullframe
                                       org-journal
-                                      writeroom-mode
+                                      ;; writeroom-mode
                                       wc-goal-mode
                                       protobuf-mode
-                                      beacon
+                                      ;; beacon
                                       nginx-mode
                                       groovy-mode
-                                      pomidor
+                                      ;; jsonnet-mode
+                                      ;; pomidor
                                       ;; keychain-environment
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -146,6 +149,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         deeper-blue
                          material
                          zenburn
                          spacemacs-light
@@ -160,7 +164,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
@@ -377,7 +381,7 @@ layers configuration. You are free to put any user code."
   (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
   (add-hook 'markdown-mode-hook 'flyspell-mode)
 
-  (beacon-mode 1)
+  ;; (beacon-mode 1)
 
   ;; babel
   (org-babel-do-load-languages 'org-babel-load-languages
@@ -517,6 +521,10 @@ layers configuration. You are free to put any user code."
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
+ '(custom-safe-themes
+   (quote
+    ("bf390ecb203806cbe351b966a88fc3036f3ff68cd2547db6ee3676e87327b311" default)))
+ '(evil-want-Y-yank-to-eol t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
@@ -555,7 +563,7 @@ layers configuration. You are free to put any user code."
     (org-docview org-habit org-info org-irc org-rmail org-w3m org-mac-link)))
  '(package-selected-packages
    (quote
-    (kubernetes org-clock-csv org-category-capture ghub let-alist org-mime auto-dim-other-buffers restclient-helm ob-restclient company-restclient ob-http restclient know-your-http-well go-playground protobuf-mode lua-mode yapfify yaml-mode ws-butler writeroom-mode visual-fill-column winum which-key web-mode web-beautify wc-goal-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org terraform-mode hcl-mode tagedit spaceline powerline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rake rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pomidor pip-requirements persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro alert log4e gntp org-journal org-download org-bullets open-junk-file nginx-mode neotree mwim move-text mmm-mode minitest markdown-toc markdown-mode magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode launchctl js2-refactor js-doc jinja2-mode intero info+ indent-guide ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-hoogle helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode groovy-mode google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh marshal logito pcache ht gh-md fuzzy fullframe flyspell-correct-helm flyspell-correct flycheck-rust flycheck-pos-tip pos-tip flycheck-haskell flycheck-elm flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg emmet-mode elm-mode elisp-slime-nav dumb-jump dockerfile-mode docker tablist magit-popup docker-tramp json-snatcher json-reformat diminish deft cython-mode company-web web-completion-data company-tern dash-functional tern company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-ansible company-anaconda column-enforce-mode cmm-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu highlight cider spinner queue pkg-info clojure-mode epl chruby cargo rust-mode bundler inf-ruby bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile packed ansible-doc ansible anaconda-mode pythonic ace-link ace-jump-helm-line helm helm-core ac-ispell auto-complete popup yasnippet undo-tree org-plus-contrib json-mode js2-mode hydra evil-unimpaired f s dash csv-mode company-statistics company coffee-mode beacon seq async aggressive-indent adaptive-wrap ace-window avy material-theme)))
+    (zenburn-theme jsonnet-mode tide typescript-mode mustache-mode nord-theme sesman kubernetes org-clock-csv org-category-capture ghub let-alist org-mime auto-dim-other-buffers restclient-helm ob-restclient company-restclient ob-http restclient know-your-http-well go-playground protobuf-mode lua-mode yapfify yaml-mode ws-butler writeroom-mode visual-fill-column winum which-key web-mode web-beautify wc-goal-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org terraform-mode hcl-mode tagedit spaceline powerline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rake rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pomidor pip-requirements persp-mode pcre2el pbcopy paradox osx-trash osx-dictionary orgit org-projectile org-present org-pomodoro alert log4e gntp org-journal org-download org-bullets open-junk-file nginx-mode neotree mwim move-text mmm-mode minitest markdown-toc markdown-mode magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint less-css-mode launchctl js2-refactor js-doc jinja2-mode intero info+ indent-guide ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make projectile helm-hoogle helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode groovy-mode google-translate golden-ratio go-guru go-eldoc gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh marshal logito pcache ht gh-md fuzzy fullframe flyspell-correct-helm flyspell-correct flycheck-rust flycheck-pos-tip pos-tip flycheck-haskell flycheck-elm flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg emmet-mode elm-mode elisp-slime-nav dumb-jump dockerfile-mode docker tablist magit-popup docker-tramp json-snatcher json-reformat diminish deft cython-mode company-web web-completion-data company-tern dash-functional tern company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-ansible company-anaconda column-enforce-mode cmm-mode clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu highlight cider spinner queue pkg-info clojure-mode epl chruby cargo rust-mode bundler inf-ruby bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile packed ansible-doc ansible anaconda-mode pythonic ace-link ace-jump-helm-line helm helm-core ac-ispell auto-complete popup yasnippet undo-tree org-plus-contrib json-mode js2-mode hydra evil-unimpaired f s dash csv-mode company-statistics company coffee-mode beacon seq async aggressive-indent adaptive-wrap ace-window avy material-theme)))
  '(paradox-github-token t)
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -596,7 +604,7 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 89)) (:foreground "#ffffff" :background "#263238"))))
+ '(default ((((class color) (min-colors 89)) (:foreground "#ffffff" :background "#263238" :family "Source Code Pro" :foundry "ADBO" :slant normal :weight normal :height 100 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 
