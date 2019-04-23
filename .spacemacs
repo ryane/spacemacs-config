@@ -68,8 +68,8 @@ values."
      yaml
      javascript
      (go :variables
-         gofmt-command "goimports"
-         ;; gofmt-args '("-s")
+         gofmt-command "gofmt"
+         gofmt-args '("-s")
          go-tab-width 2)
      terraform
      docker
