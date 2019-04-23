@@ -84,6 +84,7 @@ values."
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
+                                      doom-themes
                                       fullframe
                                       org-journal
                                       ;; writeroom-mode
@@ -151,8 +152,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         deeper-blue
                          material
+                         deeper-blue
                          zenburn
                          spacemacs-light
                          spacemacs-dark
