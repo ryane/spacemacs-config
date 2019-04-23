@@ -396,6 +396,7 @@ layers configuration. You are free to put any user code."
                                  ))
 
   (rae/configure-pomidor)
+  (setq winum-scope 'frame-local)
   )
 )
 
