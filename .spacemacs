@@ -304,10 +304,11 @@ user code."
     ;; tweak for using brew emacs (not emacs-mac which doesn't support running
     ;; in a terminal)
     (setq browse-url-browser-function 'browse-url-generic
-          browse-url-generic-program "google-chrome")
+          browse-url-generic-program "chromium")
 
     (global-set-key [key-4660] 'ignore)
     )
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -391,14 +392,12 @@ layers configuration. You are free to put any user code."
                                '(
                                  (emacs-lisp . t)
                                  (ruby . t)
-                                 (sh . t)
                                  (shell . t)
                                  ))
 
   (rae/configure-pomidor)
   (setq winum-scope 'frame-local)
   )
-)
 
 (defun rae/configure-pomidor ()
   (spacemacs/set-leader-keys-for-major-mode 'pomidor-mode "q" 'quit-window)
