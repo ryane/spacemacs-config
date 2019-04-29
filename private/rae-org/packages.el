@@ -9,5 +9,5 @@
   )
 
 (defun rae-org/init-org-journal ()
-  ;; nothing to do
+  (use-package org-journal)
   )
