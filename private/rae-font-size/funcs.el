@@ -1,7 +1,7 @@
 (defun rae/font-size-toggle ()
   (interactive)
   (if (string= rae/font-size "14")
-      (setq rae/font-size "10")
+      (setq rae/font-size "9")
     (setq rae/font-size "14"))
   (set-frame-font (concat "Source Code Pro-" rae/font-size) nil t)
   )
