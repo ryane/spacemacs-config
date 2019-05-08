@@ -47,7 +47,7 @@ values."
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     (spell-checking :variables enable-flyspell-auto-completion t)
+     (spell-checking :variables enable-flyspell-auto-completion nil)
      syntax-checking
      ;; version-control
      ;; custom layers
