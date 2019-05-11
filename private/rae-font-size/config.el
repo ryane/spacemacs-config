@@ -1,1 +1,1 @@
-(setq rae/font-size "10")
+(setq rae/font-size "9")
