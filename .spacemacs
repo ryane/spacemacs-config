@@ -46,7 +46,7 @@ values."
                markdown-command "cmark-gfm"
                markdown-live-preview-engine 'vmd
                )
-     org
+     (org :variables org-enable-org-journal-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
