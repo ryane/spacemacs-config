@@ -335,6 +335,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
    ;; js2-mode
    js2-basic-offset 2
    js-indent-level 2
+   js2-include-node-externs t
    ;; web-mode
    css-indent-offset 2
    web-mode-markup-indent-offset 2
