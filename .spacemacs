@@ -62,10 +62,14 @@ values."
      rae-org
      rae-font-size
      ;; additional layers
+     lsp
      (go :variables
          go-use-golangci-lint t
          go-tab-width 2
          godoc-at-point-function 'godoc-gogetdoc
+         go-format-before-save t
+         gofmt-command "goimports"
+         go-backend 'lsp
          )
      react
      yaml
